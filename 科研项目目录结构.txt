@@ -1,0 +1,70 @@
+太好了 😃，那我就帮你设计一个 **科研代码项目的推荐目录结构**，特别适合你作为研究生做实验、跑模型、整理数据用。这样以后不管是用 **PyCharm**，还是上传到 **GitHub**，都非常清晰、可维护。
+
+---
+
+# 📂 推荐科研项目目录结构
+
+```
+MyResearchProject/             # 项目根目录（整个文件夹作为 PyCharm 项目打开）
+│
+├── data/                      # 原始数据 & 处理后的数据
+│   ├── raw/                   # 原始数据（只读，不要直接改）
+│   ├── processed/             # 清洗、预处理后的数据
+│   └── external/              # 外部数据（别人提供的、公共数据集）
+│
+├── notebooks/                 # Jupyter 笔记本（探索性实验、绘图、临时代码）
+│   ├── EDA.ipynb              # 数据探索分析 (Exploratory Data Analysis)
+│   └── test_model.ipynb       # 模型测试
+│
+├── scripts/                   # Python 脚本（可复用的正式代码）
+│   ├── preprocess.py          # 数据预处理
+│   ├── train.py               # 模型训练
+│   ├── evaluate.py            # 模型评估
+│   └── utils.py               # 工具函数（画图、常用方法）
+│
+├── results/                   # 实验结果
+│   ├── figures/               # 图表（论文里的图可以放这里）
+│   ├── tables/                # 表格（统计结果）
+│   └── logs/                  # 运行日志 / 模型训练记录
+│
+├── models/                    # 保存的模型（如 .pkl, .h5, .pt）
+│   └── checkpoints/           # 训练过程中的中间模型
+│
+├── requirements.txt           # Python 依赖列表 (pip freeze > requirements.txt)
+├── environment.yml            # Conda 环境文件 (可选)
+├── README.md                  # 项目说明文档（介绍项目、运行方法）
+└── .gitignore                 # Git 忽略文件（比如忽略 data/raw, results 等）
+```
+
+---
+
+# 🔑 使用建议
+
+1. **data/raw 一定不要乱改**
+
+   * 原始数据保持原样，这样实验可以复现。
+   * 预处理都放到 `data/processed`。
+
+2. **notebooks 用来探索，scripts 才是最终代码**
+
+   * 笔记本里做实验，找到合适的方法后再整理到脚本里。
+   * 这样能避免“代码只能在某个 notebook 跑”的混乱局面。
+
+3. **results 独立保存**
+
+   * 所有图表、结果单独存放，方便你写论文时直接引用。
+
+4. **依赖管理**
+
+   * 推荐用 `requirements.txt` 或者 `conda env export > environment.yml`，以后别人一键复现你的环境。
+
+5. **版本控制**
+
+   * 用 Git 管理，但注意 `.gitignore` 忽略大文件（比如 `data/raw`、`results/`）。
+   * 这样 GitHub 仓库不会变得臃肿。
+
+---
+
+✅ 这样一个目录结构，在 PyCharm 里直接 **Open as Project** 就能完整展开，很适合长期科研开发。
+
+要不要我顺便帮你写一份 `.gitignore` 模板，专门适配这种科研项目（自动忽略数据和模型大文件，只保留代码和配置）？
